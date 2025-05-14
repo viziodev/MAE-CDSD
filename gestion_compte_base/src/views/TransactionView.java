@@ -1,6 +1,5 @@
 package views;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import entity.Transaction;
@@ -11,6 +10,7 @@ public class TransactionView {
 
      public  Transaction saisieTransaction(){
         Transaction transaction=new Transaction();
+        //TODO : Generer Id et Numero
          double montant;
          do {
                System.out.println("Entrer le Montant de la  Transaction"); 
@@ -33,9 +33,9 @@ public class TransactionView {
 
      }
 
-     public void  afficheTransaction(ArrayList<Transaction> transactions){
-       for (int index = 0; index < transactions.size(); index++) {
-            System.out.println(transactions.get(index));
+     public void  afficheTransaction(Transaction[] transactions,int nbreTransaction){
+       for (int index = 0; index < nbreTransaction; index++) {
+            System.out.println(transactions[index].toChaine());
        }
      }
 

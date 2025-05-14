@@ -33,8 +33,7 @@ public class Transaction {
          this.type = type;
      }
 
-     @Override
-     public String toString() {
+     public String toChaine() {
         return "Transaction [id=" + id + ", date=" + date + ", montant=" + montant + ", type=" + type + "]";
      }
 

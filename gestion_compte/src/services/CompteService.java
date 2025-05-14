@@ -1,39 +1,26 @@
 package services;
 
+import java.util.ArrayList;
+
 import entity.Compte;
 
 public class CompteService {
-    private final int N=10;
-   
-
-    private Compte[] comptes=new Compte[N];
-    private int nbreCompte;
-    
-
+    private ArrayList<Compte> comptes=new ArrayList<>();
+    public ArrayList<Compte> getComptes() {
+        return comptes;
+    }
     public CompteService() {
         
     }
-
     public boolean addCompte(Compte compte){
-     if (nbreCompte<N) {
-         comptes[nbreCompte]=compte; 
-         nbreCompte++;
+        comptes.add(compte);
         return true;
-     }
-         return false;
     }
 
-    public Compte[] getComptes() {
-        return comptes;
-    }
-
-    public int getNbreCompte() {
-        return nbreCompte;
-    }
     public Compte getCompteByNum(String numero){
-      for (int index = 0; index < nbreCompte; index++) {
-          if (comptes[index].getNumero().equals(numero)) {
-              return  comptes[index];
+      for (int index = 0; index < comptes.size(); index++) {
+          if (comptes.get(index).getNumero().equals(numero)) {
+              return  comptes.get(index);
           }
       }
         return null;

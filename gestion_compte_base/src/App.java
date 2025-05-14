@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 import entity.Compte;
 import entity.Transaction;
-import entity.TypeTransaction;
 import services.CompteService;
 import views.CompteView;
 import views.MenuOption;
@@ -39,7 +38,7 @@ public class App {
                    }
                     break;
                 case SHOW_COMPTE:
-                    compteView.afficheCompte(compteService.getComptes());
+                    compteView.afficheCompte(compteService.getComptes(), compteService.getNbreCompte());
                     break;
                 case ADD_TRANSACTION_COMPTE:
                    //1-Rechercher le Compte
@@ -51,15 +50,10 @@ public class App {
                      }else{
                            //2-Ajouter la transaction  si le compte existe
                           //saisie la Transaction
-                           Transaction transaction=transactionView.saisieTransaction();
+                            Transaction transaction=transactionView.saisieTransaction();
                           //Ajouter la Transaction au compte
-                           TransactionMessage transactionMessage;
-                          if (transaction.getType()==TypeTransaction.DEPOT) {
-                             transactionMessage=  compte.depot(transaction);
-                          }else{
-                               transactionMessage=  compte.retrait(transaction);
-                          }
-                            System.out.println(transactionMessage.getMessage());
+                           TransactionMessage transactionMessage=  compte.addTransaction(transaction);
+                          System.out.println(transactionMessage.getMessage());
                      }
 
                   
@@ -73,7 +67,7 @@ public class App {
                        System.out.println("Aucun compte correspond a ce numero");
                     }else{
                           //2-si le compte existe alors on affiche ses transaction
-                          transactionView.afficheTransaction(compte.getTransactions());
+                          transactionView.afficheTransaction(compte.getTransactions(), compte.getNbreTransaction());
                      }
 
                  
